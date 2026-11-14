@@ -128,8 +128,10 @@ Aleksei Kan, https://github.com/KanAlexey
 
 ## LICENSE
 
-**capacitor-code-push** is licensed under the Apache License 2.0; see the LICENSE file. `src/acquisition-client.ts` is
-adapted from microsoft/code-push and carries its MIT notice.
+**capacitor-code-push** is licensed under the Apache License 2.0; see the LICENSE file. It is based on
+[KanAlexey/capacitor-code-push](https://github.com/KanAlexey/capacitor-code-push) by Aleksei Kan, and files have been
+modified from that original; the NOTICE file says so, and the git history keeps the original commits.
+`src/acquisition-client.ts` is adapted from microsoft/code-push and carries its MIT notice.
 
 ## API
 

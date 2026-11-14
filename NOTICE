@@ -1,0 +1,9 @@
+capacitor-code-push
+
+This project is based on capacitor-code-push by Aleksei Kan
+(https://github.com/KanAlexey/capacitor-code-push), licensed under the Apache License, Version 2.0.
+Files in this repository have been modified from that original. The git history keeps the original
+commits and their author, and records every later change.
+
+src/acquisition-client.ts is adapted from microsoft/code-push (Copyright (c) Microsoft Corporation,
+MIT License); its notice is kept in that file.
