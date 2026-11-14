@@ -1,5 +1,5 @@
 import { CapacitorHttp } from '@capacitor/core';
-import { CodePush, SyncStatus } from 'capacitor-plugin-code-push';
+import { CodePush, SyncStatus } from 'capacitor-code-push-client';
 
 const log = (line) => {
   const output = document.getElementById('log');

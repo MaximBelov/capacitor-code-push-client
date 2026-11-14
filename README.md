@@ -1,4 +1,4 @@
-# capacitor-plugin-code-push
+# capacitor-code-push-client
 
 ## Why this plugin exists
 
@@ -35,7 +35,7 @@ installs the plugin as npm would ship it. How it works, and why, is in [DESIGN.m
 ## Installation
 
 ```bash
-npm install capacitor-plugin-code-push
+npm install capacitor-code-push-client
 npx cap sync
 ```
 
@@ -64,7 +64,7 @@ configured key makes every install fail rather than install unverified code.
 ## Usage
 
 ```ts
-import { CodePush, InstallMode, SyncStatus } from 'capacitor-plugin-code-push';
+import { CodePush, InstallMode, SyncStatus } from 'capacitor-code-push-client';
 
 // On every start, not only when online: an update that never confirms is rolled back at the next cold start.
 await CodePush.notifyApplicationReady();
@@ -131,7 +131,7 @@ Aleksei Kan, https://github.com/KanAlexey
 
 ## LICENSE
 
-**capacitor-plugin-code-push** is licensed under the Apache License 2.0; see the LICENSE file. It is based on
+**capacitor-code-push-client** is licensed under the Apache License 2.0; see the LICENSE file. It is based on
 [KanAlexey/capacitor-code-push](https://github.com/KanAlexey/capacitor-code-push) by Aleksei Kan, and files have been
 modified from that original; the NOTICE file says so, and the git history keeps the original commits.
 `src/acquisition-client.ts` is adapted from microsoft/code-push and carries its MIT notice.

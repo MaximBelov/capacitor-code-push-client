@@ -1,4 +1,4 @@
-# capacitor-plugin-code-push: design
+# capacitor-code-push-client: design
 
 Status: draft, 2026-10-24. Nothing is published yet.
 
@@ -52,7 +52,7 @@ Cordova plugin's `abortDownload` never cancelled anything), web support beyond a
 ## 4. Architecture
 
 ```
-app                              capacitor-plugin-code-push
+app                              capacitor-code-push-client
 ───                              ──────────────────────────────────────────────────────────────
 plain wrapper object ─────────► CodePush (TS orchestrator: sync, checkForUpdate, download,
                                  install, notifyApplicationReady, reports)
@@ -80,7 +80,7 @@ notice is kept in the file). The npm package `code-push` is deprecated and pulls
 yazl for its management half, which a device never uses. The port speaks the same three endpoints with the same
 fields (§10), takes its configuration explicitly and reads no `window` globals.
 
-Identifiers: npm `capacitor-plugin-code-push`, JS name `CodePush` (settings under `plugins.CodePush`), Swift class
+Identifiers: npm `capacitor-code-push-client`, JS name `CodePush` (settings under `plugins.CodePush`), Swift class
 `CodePushPlugin`, Kotlin package `io.github.maximbelov.codepush`. Nothing collides with cordova-plugin-code-push
 (`com.microsoft.cordova.CodePush`, ObjC `CodePush`), but the two must never be installed in one app: both would
 steer the web view.
@@ -525,6 +525,11 @@ Answered 2026-11-14:
 7. **Name and home, again**: the plugin moved to the repository MaximBelov/capacitor-plugin-code-push and the npm
    name `capacitor-plugin-code-push`, and the Kotlin package to `io.github.maximbelov.codepush`. The JS name
    `CodePush`, the `plugins.CodePush` settings and the Swift product `CapacitorCodePush` are unchanged.
+8. **Name and home, a third time**: npm `capacitor-code-push-client` in the repository
+   MaximBelov/capacitor-code-push-client, with no `plugin` in the name. The Swift package and library product are
+   `CapacitorCodePushClient`, because `npx cap sync` writes the product it asks for from the npm name (`fixName` in
+   `@capacitor/cli`), and a product named anything else is not found when the app's `CapApp-SPM` resolves. The JS
+   name `CodePush`, the `plugins.CodePush` settings, the Swift targets and the Kotlin package are unchanged.
 
 ## 19. Using it from an app
 

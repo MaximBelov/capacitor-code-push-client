@@ -2,11 +2,11 @@
 import PackageDescription
 
 let package = Package(
-    name: "CapacitorCodePush",
+    name: "CapacitorCodePushClient",
     platforms: [.iOS(.v15)],
     products: [
         .library(
-            name: "CapacitorCodePush",
+            name: "CapacitorCodePushClient",
             targets: ["CodePushPlugin"])
     ],
     dependencies: [
