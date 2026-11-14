@@ -1,4 +1,4 @@
-package io.github.kanalexey.codepush
+package io.github.maximbelov.codepush
 
 import org.json.JSONObject
 import java.io.File

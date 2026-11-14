@@ -1,4 +1,4 @@
-package io.github.kanalexey.codepush
+package io.github.maximbelov.codepush
 
 import org.junit.After
 import org.junit.Assert.assertEquals

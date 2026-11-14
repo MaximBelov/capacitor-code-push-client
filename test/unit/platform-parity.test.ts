@@ -24,7 +24,7 @@ function swiftImplementations(): string[] {
 }
 
 function kotlinMethods(): string[] {
-  const source = read('android/src/main/kotlin/io/github/kanalexey/codepush/CodePushPlugin.kt');
+  const source = read('android/src/main/kotlin/io/github/maximbelov/codepush/CodePushPlugin.kt');
   return [...source.matchAll(/@PluginMethod\s+fun (\w+)\(/g)].map(([, name]) => name);
 }
 

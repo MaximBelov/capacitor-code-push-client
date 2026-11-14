@@ -1,4 +1,4 @@
-package io.github.kanalexey.codepush
+package io.github.maximbelov.codepush
 
 /**
  * Logging that works on the device and in JVM tests alike: the core classes call this instead of

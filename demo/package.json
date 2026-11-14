@@ -1,6 +1,6 @@
 {
-  "name": "capacitor-code-push-demo",
-  "description": "Demo of capacitor-code-push: one button per call, and the autopilot the end-to-end tests drive",
+  "name": "capacitor-plugin-code-push-demo",
+  "description": "Demo of capacitor-plugin-code-push: one button per call, and the autopilot the end-to-end tests drive",
   "type": "module",
   "scripts": {
     "plugin:pack": "node scripts/pack-plugin.mjs",
@@ -13,7 +13,7 @@
     "@capacitor/android": "^8.5.3",
     "@capacitor/core": "^8.5.3",
     "@capacitor/ios": "^8.5.3",
-    "capacitor-code-push": "file:.plugin"
+    "capacitor-plugin-code-push": "file:.plugin"
   },
   "devDependencies": {
     "@capacitor/cli": "^8.5.3",

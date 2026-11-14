@@ -1,4 +1,4 @@
-package io.github.kanalexey.codepush
+package io.github.maximbelov.codepush
 
 /**
  * Which status report is due, following react-native-code-push's telemetry manager. The last report the server

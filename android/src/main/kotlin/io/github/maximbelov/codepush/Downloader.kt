@@ -1,4 +1,4 @@
-package io.github.kanalexey.codepush
+package io.github.maximbelov.codepush
 
 import java.io.File
 import java.io.IOException

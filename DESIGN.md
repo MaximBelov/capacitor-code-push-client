@@ -1,4 +1,4 @@
-# capacitor-code-push: design
+# capacitor-plugin-code-push: design
 
 Status: draft, 2026-10-24. Nothing is published yet.
 
@@ -52,7 +52,7 @@ Cordova plugin's `abortDownload` never cancelled anything), web support beyond a
 ## 4. Architecture
 
 ```
-app                              capacitor-code-push
+app                              capacitor-plugin-code-push
 ───                              ──────────────────────────────────────────────────────────────
 plain wrapper object ─────────► CodePush (TS orchestrator: sync, checkForUpdate, download,
                                  install, notifyApplicationReady, reports)
@@ -80,8 +80,8 @@ notice is kept in the file). The npm package `code-push` is deprecated and pulls
 yazl for its management half, which a device never uses. The port speaks the same three endpoints with the same
 fields (§10), takes its configuration explicitly and reads no `window` globals.
 
-Identifiers: npm `capacitor-code-push`, JS name `CodePush` (settings under `plugins.CodePush`), Swift class
-`CodePushPlugin`, Kotlin package `io.github.kanalexey.codepush`. Nothing collides with cordova-plugin-code-push
+Identifiers: npm `capacitor-plugin-code-push`, JS name `CodePush` (settings under `plugins.CodePush`), Swift class
+`CodePushPlugin`, Kotlin package `io.github.maximbelov.codepush`. Nothing collides with cordova-plugin-code-push
 (`com.microsoft.cordova.CodePush`, ObjC `CodePush`), but the two must never be installed in one app: both would
 steer the web view.
 
@@ -519,6 +519,12 @@ Answered 2026-10-24:
    is asked (§5).
 5. **Own acquisition client** instead of the deprecated `code-push` package or a fork of it (§4, §10).
 6. **Name and home**: npm `capacitor-code-push`, a personal public repository, Apache-2.0.
+
+Answered 2026-11-14:
+
+7. **Name and home, again**: the plugin moved to the repository MaximBelov/capacitor-plugin-code-push and the npm
+   name `capacitor-plugin-code-push`, and the Kotlin package to `io.github.maximbelov.codepush`. The JS name
+   `CodePush`, the `plugins.CodePush` settings and the Swift product `CapacitorCodePush` are unchanged.
 
 ## 19. Using it from an app
 

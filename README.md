@@ -1,4 +1,4 @@
-# capacitor-code-push
+# capacitor-plugin-code-push
 
 ## Why this plugin exists
 
@@ -25,14 +25,17 @@ Also here: tests that need no device (Vitest, Kotlin on the JVM, XCTest of the S
 app on an iOS simulator and an Android emulator against a local CodePush server, and a demo app in `demo/` that
 installs the plugin as npm would ship it. How it works, and why, is in [DESIGN.md](DESIGN.md).
 
-> **Not yet measured against a real Revopush release.** DESIGN.md §17 lists what only that can prove.
+> **Measured against Revopush on two phones, not yet in a store release.** DESIGN.md §17 says what was measured there (a
+> Galaxy A13 on Android 14 and an iPhone 17 Pro on iOS 26.6.1, inside a production Ionic/Angular app: update checks, full
+> and diff releases, the package hash, a rollback and its report, and the move from cordova-plugin-code-push) and what is
+> still to prove (`ON_NEXT_RESUME` timing, the reset through a real store install, client id continuity).
 
 ![Platform](https://img.shields.io/badge/platform-android%20%7C%20ios-lightgrey.svg)
 
 ## Installation
 
 ```bash
-npm install capacitor-code-push
+npm install capacitor-plugin-code-push
 npx cap sync
 ```
 
@@ -61,7 +64,7 @@ configured key makes every install fail rather than install unverified code.
 ## Usage
 
 ```ts
-import { CodePush, InstallMode, SyncStatus } from 'capacitor-code-push';
+import { CodePush, InstallMode, SyncStatus } from 'capacitor-plugin-code-push';
 
 // On every start, not only when online: an update that never confirms is rolled back at the next cold start.
 await CodePush.notifyApplicationReady();
@@ -128,7 +131,7 @@ Aleksei Kan, https://github.com/KanAlexey
 
 ## LICENSE
 
-**capacitor-code-push** is licensed under the Apache License 2.0; see the LICENSE file. It is based on
+**capacitor-plugin-code-push** is licensed under the Apache License 2.0; see the LICENSE file. It is based on
 [KanAlexey/capacitor-code-push](https://github.com/KanAlexey/capacitor-code-push) by Aleksei Kan, and files have been
 modified from that original; the NOTICE file says so, and the git history keeps the original commits.
 `src/acquisition-client.ts` is adapted from microsoft/code-push and carries its MIT notice.

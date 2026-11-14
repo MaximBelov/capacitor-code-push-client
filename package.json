@@ -1,5 +1,5 @@
 {
-  "name": "capacitor-code-push",
+  "name": "capacitor-plugin-code-push",
   "version": "0.1.0",
   "description": "CodePush client for Capacitor apps: over-the-air web updates from a CodePush-compatible server such as Revopush",
   "main": "dist/plugin.cjs.js",
@@ -21,10 +21,10 @@
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/KanAlexey/capacitor-code-push.git"
+    "url": "git+https://github.com/MaximBelov/capacitor-plugin-code-push.git"
   },
   "bugs": {
-    "url": "https://github.com/KanAlexey/capacitor-code-push/issues"
+    "url": "https://github.com/MaximBelov/capacitor-plugin-code-push/issues"
   },
   "keywords": [
     "capacitor",
@@ -92,5 +92,5 @@
       "src": "android"
     }
   },
-  "homepage": "https://github.com/KanAlexey/capacitor-code-push#readme"
+  "homepage": "https://github.com/MaximBelov/capacitor-plugin-code-push#readme"
 }

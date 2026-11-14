@@ -1,4 +1,4 @@
-package io.github.kanalexey.codepush
+package io.github.maximbelov.codepush
 
 /** A package as JavaScript sees it: its metadata plus what this device knows about it. */
 data class PackageView(val metadata: PackageMetadata, val isFirstRun: Boolean, val failedInstall: Boolean)

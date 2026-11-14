@@ -1,4 +1,4 @@
-# capacitor-code-push demo
+# capacitor-plugin-code-push demo
 
 A Capacitor app with one button per call of the plugin, and the answer of each shown on screen.
 
