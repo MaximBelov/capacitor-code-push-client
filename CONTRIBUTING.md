@@ -49,15 +49,21 @@ This template is integrated with ESLint, Prettier, and SwiftLint. Using these to
 
 ## Publishing
 
-Nothing is published by hand. A push to `master` runs `.github/workflows/test.yml`, and when every job passes and the
-version in `package.json` is not on npm yet, its `publish` job publishes it through npm's trusted publishing, tags
-the commit that first carried the version, and makes a GitHub release from that version's block of `CHANGELOG.md`.
-So a release is: move the `Unreleased` notes under a new `## v<version>` heading, bump `version` in `package.json`
-and `src/version.ts` (a test keeps them equal), and merge.
+Nothing is published by hand. `.github/workflows/ci.yaml` runs every test a pull request needs and ends in one job,
+`ci`, which is the check a ruleset on `main` requires. A push to `main` runs every test, and when `ci` is green and the
+version in `package.json` is not on npm yet, its `publish` job publishes it through npm's trusted publishing, tags the
+commit that first carried the version, and makes a GitHub release from that version's block of `CHANGELOG.md`. So a
+release is: move the `Unreleased` notes under a new `## v<version>` heading, bump `version` in `package.json` and
+`src/version.ts` (a test keeps them equal), and merge.
 
 The `publish` job runs only while the repository variable `NPM_PUBLISH` is `true`. Before the first release: publish
 the first version by hand (`npm login`, then `npm publish --access public`), set the package's Trusted Publisher on
-npmjs.com to this repository and `test.yml` with no environment, and then set the variable.
+npmjs.com to this repository and `ci.yaml` with no environment, and then set the variable.
+
+ZIPFoundation is pinned to an exact release in `Package.swift` and `test/ios/Package.swift`. `.github/workflows/pins.yaml`
+checks its latest release every Monday and opens a pull request that moves both pins; it needs Settings > Actions >
+General > "Allow GitHub Actions to create and approve pull requests". `node scripts/check-pins.mjs` says where the pin
+stands.
 
 > **Note**: The [`files`](https://docs.npmjs.com/cli/v7/configuring-npm/package-json#files) array in `package.json`
 > specifies which files get published. The demo installs the plugin from a packed copy, so a file missing there breaks

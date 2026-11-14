@@ -1,0 +1,37 @@
+name: Tests
+# The TypeScript: Vitest on src/ with its coverage floor, the type contract in test/types, ESLint, Prettier, and the build docgen and
+# rollup make. Called by ci.yaml, for every pull request and every push to main.
+on:
+  workflow_call:
+jobs:
+  unit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: actions/setup-node@v7.1.0
+        with:
+          # the coverage reporter needs a current Node
+          node-version: 24
+      - run: npm ci
+      - run: npm run test:unit:coverage
+      - run: npm run typecheck:test
+      - run: npm run eslint
+      - run: npm run prettier -- --check
+      # docgen writes the API section of README.md from src/definitions.ts: a change to the API whose README was not regenerated
+      # shows up here rather than in the published package.
+      - name: The README's API section is the build of src/definitions.ts
+        run: |
+          npm run build
+          if [ -n "$(git status --porcelain -- README.md)" ]; then
+            git diff -- README.md
+            echo "README.md is not what docgen writes from src/definitions.ts: run npm run build and commit the result"
+            exit 1
+          fi
+      - name: Keep the coverage report
+        if: always()
+        uses: actions/upload-artifact@v7.0.2
+        with:
+          name: coverage-js
+          path: coverage/js
+          if-no-files-found: ignore

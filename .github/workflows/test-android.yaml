@@ -1,0 +1,59 @@
+name: Android tests
+# The Kotlin of android/ on the JVM, and the demo app against a local CodePush server on an Android emulator. Linux with KVM.
+# Called by ci.yaml when something it covers changes, and for every push to main. Capacitor 8 builds with JDK 21.
+on:
+  workflow_call:
+jobs:
+  # No emulator: the state machine, staging, hashing and downloads, with the Android floor; then the library's own build and Android lint.
+  jvm:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: actions/setup-node@v7.1.0
+        with:
+          node-version: 24
+      - uses: actions/setup-java@v6.0.1
+        with:
+          distribution: temurin
+          java-version: 21
+      - uses: gradle/actions/setup-gradle@v6.4.0
+      # android/settings.gradle takes capacitor-android from node_modules
+      - run: npm ci
+      - run: npm run test:android:coverage
+      - run: cd android && ./gradlew build
+      - name: Keep the coverage report
+        if: always()
+        uses: actions/upload-artifact@v7.0.2
+        with:
+          name: coverage-android
+          path: android/build/reports/coverage/test/debug
+          if-no-files-found: ignore
+  # The demo app, built on the packed plugin, against a local CodePush server: install, cold start on a package, rollback of one that
+  # never confirms, a diff, and the reset a new binary makes (test/e2e/run-android.mjs). adb reverse inside the scenario gives the
+  # emulator the runner's localhost.
+  e2e:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: actions/setup-node@v7.1.0
+        with:
+          node-version: 24
+      - uses: actions/setup-java@v6.0.1
+        with:
+          distribution: temurin
+          java-version: 21
+      - uses: gradle/actions/setup-gradle@v6.4.0
+      - run: npm ci
+      # An emulator needs hardware acceleration, which the runner allows to everyone once /dev/kvm is open.
+      - name: Enable KVM
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+      - uses: reactivecircus/android-emulator-runner@v2.38.0
+        with:
+          api-level: 35
+          arch: x86_64
+          script: ANDROID_SERIAL=emulator-5554 npm run test:e2e:android

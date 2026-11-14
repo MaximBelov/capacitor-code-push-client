@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- iOS: ZIPFoundation is pinned to exactly 0.9.20 (it was `from: "0.9.19"`); a weekly workflow proposes the next release
+- CI: one workflow, `ci.yaml`, with a single required `ci` job; the platform tests run only when a pull request reaches
+  them, and a push to `main` publishes
 - Fix: a status report was sent twice when the app called `notifyApplicationReady()` and `sync()` together
 - CI: the Swift core's XCTests run on the macOS host with `swift test`, not on a simulator, which took most of that job's time
 

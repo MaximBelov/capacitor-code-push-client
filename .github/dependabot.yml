@@ -1,4 +1,6 @@
 # Weekly updates for what this repository depends on. Dependabot reads this file from the default branch only.
+# Swift is not here: ZIPFoundation is pinned to an exact release, which Dependabot does not move, so .github/workflows/pins.yaml compares
+# the pin with its latest release instead.
 # Capacitor's packages move together: @capacitor/core, @capacitor/android and @capacitor/ios (npm), the Android Gradle plugin and
 # Kotlin in android/build.gradle (the versions Capacitor's template sets), and capacitor-swift-pm in Package.swift, so a Capacitor
 # bump is made by hand, all of them at once.
@@ -41,15 +43,4 @@ updates:
       default-days: 7
     ignore:
       - dependency-name: '@capacitor/*'
-    labels: [dependencies]
-
-  # ZIPFoundation, the one Swift dependency besides Capacitor
-  - package-ecosystem: swift
-    directory: /
-    schedule:
-      interval: weekly
-    cooldown:
-      default-days: 7
-    ignore:
-      - dependency-name: capacitor-swift-pm
     labels: [dependencies]
