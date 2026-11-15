@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## v0.1.1
+
 - Renamed: npm `capacitor-code-push-client` (was `capacitor-plugin-code-push`), Swift package and product
   `CapacitorCodePushClient`, the name `npx cap sync` asks for. Imports change; `CodePush` and `plugins.CodePush` do not
 - iOS: ZIPFoundation is pinned to exactly 0.9.20 (it was `from: "0.9.19"`); a weekly workflow proposes the next release
