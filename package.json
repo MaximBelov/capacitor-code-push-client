@@ -1,6 +1,6 @@
 {
   "name": "capacitor-code-push-client",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "CodePush client for Capacitor apps: over-the-air web updates from a CodePush-compatible server such as Revopush",
   "main": "dist/plugin.cjs.js",
   "module": "dist/esm/index.js",
