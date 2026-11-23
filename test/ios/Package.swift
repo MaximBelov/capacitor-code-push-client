@@ -8,7 +8,7 @@ let package = Package(
     name: "CodePushCoreTests",
     platforms: [.iOS(.v15), .macOS(.v12)],
     dependencies: [
-        .package(url: "https://github.com/weichsel/ZIPFoundation.git", exact: "0.9.20")
+        .package(url: "https://github.com/weichsel/ZIPFoundation.git", exact: "0.9.21")
     ],
     targets: [
         .target(
