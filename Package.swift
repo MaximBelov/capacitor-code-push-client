@@ -11,7 +11,7 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/ionic-team/capacitor-swift-pm.git", from: "8.0.0"),
-        .package(url: "https://github.com/weichsel/ZIPFoundation.git", exact: "0.9.20")
+        .package(url: "https://github.com/weichsel/ZIPFoundation.git", exact: "0.9.21")
     ],
     targets: [
         // The state machine, staging and downloads: Foundation only, so XCTest reaches it without a bridge.

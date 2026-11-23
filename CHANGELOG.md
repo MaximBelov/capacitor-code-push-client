@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- iOS: ZIPFoundation 0.9.21 (it was 0.9.20)
 ## v0.1.1
 
 - Renamed: npm `capacitor-code-push-client` (was `capacitor-plugin-code-push`), Swift package and product
